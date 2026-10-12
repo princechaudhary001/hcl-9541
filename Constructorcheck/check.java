@@ -1,11 +1,13 @@
 package Constructorcheck;
 
 public class check {
-    public check(){
-        System.out.println();
+    public check() {
+        System.out.println("Constructor called");
     }
-
 }
+
 class Checking {
-    check obj = new check();
+    public static void main(String[] args) {
+        check obj = new check();
+    }
 }

@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Build output
+out/
+bin/
+*.class
+
+# IDE
+.idea/
+*.iml

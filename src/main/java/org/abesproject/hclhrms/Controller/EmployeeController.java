@@ -1,12 +1,9 @@
 package org.abesproject.hclhrms.Controller;
 
-import org.abesproject.hclhrms.Service.EmpServiceImp;
+import org.abesproject.hclhrms.Service.EmployeeServiceImp;
 import org.abesproject.hclhrms.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,7 +11,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmpServiceImp empServiceImp;
+    private EmployeeServiceImp empServiceImp;
 
     @GetMapping("/")
     public String welcome() {
@@ -33,6 +30,16 @@ public class EmployeeController {
 
     @PostMapping("/addEmpbulk")
     public String addEmpbulk(@RequestBody List<Employee> bulkEmp) {
-        return empServiceImp.addEmpbulk(bulkEmp);
+        return empServiceImp.addBulkEmp(bulkEmp); // Fixed: passed bulkEmp argument to match service method
+    }
+
+    @DeleteMapping("/deleteById")
+    public String deleteById(@RequestParam long id) {
+        return empServiceImp.deletebyID(id);
+    }
+
+    @PutMapping("/updateById")
+    public String updateById(@RequestParam long id, @RequestBody Employee updatedEmp) {
+        return empServiceImp.updatebyId(id, updatedEmp);
     }
 }

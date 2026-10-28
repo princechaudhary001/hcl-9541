@@ -1,7 +1,7 @@
 package org.example.hrmsdatabase;
 
 import org.springframework.boot.SpringApplication;
-import org.springframewgit merge --abortork.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class hrmsdatabaseApplication {

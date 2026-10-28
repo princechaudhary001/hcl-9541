@@ -8,39 +8,34 @@ import java.time.LocalDateTime;
 @Entity(name="attendance")
 public class Attendance {
 
-    public Attendance(){
-
+    public Attendance() {
     }
+
     @Id
     @Column(name="attendanceid", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long attendanceId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empid")
     private Employee employee;
+
     @Column(nullable = false)
     private LocalDate attendancedate;
 
     private LocalDateTime inTime;
     private LocalDateTime outTime;
+    private String status;
+    private String comment;
 
-    public Attendance(long attendanceId, Employee employee, LocalDate attendancedate, LocalDateTime inTime, LocalDateTime outTime, String comment) {
+    public Attendance(long attendanceId, Employee employee, LocalDate attendancedate, LocalDateTime inTime, LocalDateTime outTime, String comment, String status) {
         this.attendanceId = attendanceId;
         this.employee = employee;
         this.attendancedate = attendancedate;
         this.inTime = inTime;
         this.outTime = outTime;
         this.comment = comment;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+        this.status = status;
     }
 
     public long getAttendanceId() {
@@ -83,8 +78,19 @@ public class Attendance {
         this.outTime = outTime;
     }
 
-    private String comment;
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
+    public String getComment() {
+        return comment;
+    }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

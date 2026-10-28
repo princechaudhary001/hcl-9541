@@ -25,6 +25,12 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public Employee login(String email, String password) {
+        return employeeRepository.findByEmail(email)
+                .filter(emp -> emp.getPassword() != null && emp.getPassword().equals(password))
+                .orElse(null);
+    }
+
     public String deleteEmployeeById(long id) {
         if (employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
